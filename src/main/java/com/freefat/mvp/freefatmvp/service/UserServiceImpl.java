@@ -15,9 +15,9 @@ public class UserServiceImpl implements UserService
 
     @Override
     public User saveUser(User user)
-    {
-
-        return repository.save(user);
+    {   Optional<User> oUserToValidate = findUserByEmail(user.getEmail());
+        if (oUserToValidate.isPresent()) { return null; }
+        else { return repository.save(user); }
     }
 
     @Override
@@ -29,4 +29,7 @@ public class UserServiceImpl implements UserService
     {
         return repository.findById(id);
     }
+
+    @Override
+    public Optional<User> findUserByEmail(String email) { return repository.findByEmail(email); }
 }

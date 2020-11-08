@@ -16,7 +16,11 @@ public class UserController
     UserService service;
 
     @PostMapping("/signup")
-    public User saveUser(@RequestBody User user) { return service.saveUser(user); }
+    public ResponseEntity<User> saveUser(@RequestBody User user)
+    {   User oUserToSave = service.saveUser(user);
+        if(oUserToSave == null){ return ResponseEntity.notFound().build(); }
+        else {return ResponseEntity.ok().body(oUserToSave);}
+    }
 
     @GetMapping("/get/{id}")
     public User getUserById(@PathVariable("id") String id) { return service.findUserById(id).get(); }
@@ -24,10 +28,7 @@ public class UserController
     @PostMapping("/signin")
     public ResponseEntity<User> signInUser(@RequestBody User user)
     {   Optional<User> userToSignIn = service.signInUser(user);
-        if(userToSignIn.isPresent())
-        {   return ResponseEntity.ok().body(userToSignIn.get());
-        } else
-        {   return ResponseEntity.notFound().build();
-        }
+        if(userToSignIn.isPresent()){   return ResponseEntity.ok().body(userToSignIn.get());}
+        else{ return ResponseEntity.notFound().build(); }
     }
 }
