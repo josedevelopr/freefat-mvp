@@ -16,8 +16,13 @@ public class UserServiceImpl implements UserService
     @Override
     public User saveUser(User user)
     {
+
         return repository.save(user);
     }
+
+    @Override
+    public Optional<User> signInUser(User user)
+    { return repository.findByEmailAndPassword(user.getEmail(), user.getPassword()); }
 
     @Override
     public Optional<User> findUserById(String id)

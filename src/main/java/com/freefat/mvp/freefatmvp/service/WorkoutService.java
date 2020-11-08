@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface WorkoutService
-{
-    Workout saveWorkout(Workout workout);
+{   Workout saveWorkout(Workout workout);
+    Workout updateWorkout(Workout workout);
     List<Workout> findAllWorkouts();
     Optional<Workout> findWorkoutById(String id);
 }

@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MealService
-{
-    Meal saveMeal(Meal meal);
+{   Meal saveMeal(Meal meal);
     List<Meal> findAllMeals();
     Optional<Meal> findMealById(String id);
 }

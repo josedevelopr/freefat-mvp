@@ -10,8 +10,7 @@ import java.util.Optional;
 
 @Service
 public class MealServiceImpl implements MealService
-{
-    @Autowired
+{   @Autowired
     private MealRepository repository;
 
     @Override

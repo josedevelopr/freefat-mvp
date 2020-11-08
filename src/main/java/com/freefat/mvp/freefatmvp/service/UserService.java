@@ -7,5 +7,6 @@ import java.util.Optional;
 public interface UserService
 {
     User saveUser(User user);
+    Optional<User> signInUser(User user);
     Optional<User> findUserById(String id);
 }

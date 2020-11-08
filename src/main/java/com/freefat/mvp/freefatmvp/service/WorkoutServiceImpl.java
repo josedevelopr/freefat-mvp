@@ -18,6 +18,9 @@ public class WorkoutServiceImpl implements WorkoutService
     public Workout saveWorkout(Workout workout) { return repository.save(workout); }
 
     @Override
+    public Workout updateWorkout(Workout workout) { return repository.save(workout); }
+
+    @Override
     public List<Workout> findAllWorkouts() { return repository.findAll(); }
 
     @Override
